@@ -14,9 +14,18 @@
 #include "Module.h"
 
 
+// journalctl -p 6..0 -f | grep wps
+// #define	LOG_EMERG	0	/* system is unusable */
+// #define	LOG_ALERT	1	/* action must be taken immediately */
+// #define	LOG_CRIT	2	/* critical conditions */
+// #define	LOG_ERR		3	/* error conditions */
+// #define	LOG_WARNING	4	/* warning conditions */
+// #define	LOG_NOTICE	5	/* normal but significant condition */
+// #define	LOG_INFO	6	/* informational */
+// #define	LOG_DEBUG	7	/* debug-level messages */
 void* dlsym(void * __restrict handle, const char * __restrict symbol)
 {
-    EIT_SYSLOG(LOG_INFO, "%s", "Enter dlsym!");
+    EIT_SYSLOG(LOG_DEBUG, "%s", "Enter dlsym!");
 
     ///>
     static unsigned long long offset = (unsigned long long)0;
@@ -57,7 +66,7 @@ void* dlsym(void * __restrict handle, const char * __restrict symbol)
     EIT_SYSLOG(LOG_INFO, "%s", tmpchars);
 
     ///>
-    EIT_SYSLOG(LOG_INFO, "%s", "Leave dlsym!");
+    EIT_SYSLOG(LOG_DEBUG, "%s", "Leave dlsym!");
     return addr;
 }
 
