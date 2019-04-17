@@ -269,7 +269,7 @@ void* dlsym(void * __restrict handle, const char * __restrict symbol)
 
     static Dlsym kOrgDlsym = NULL;
 
-    if (!kOrgDlsym)
+    if (__buildin_expect(!kOrgDlsym, 0))
     {
         pthread_mutex_lock(&mutex);
         if (!kOrgDlsym)
